@@ -36,7 +36,7 @@ def custom_lesson_plan(topic: str,
                     problems: str,
                     template_num: int):
     # Path to your JSON template file
-    file_path = f"./app/template_{template_num}.json"
+    file_path = f"./template_{template_num}.json"
 
     # Read the JSON file and convert it to a string
     with open(file_path, 'r') as file:

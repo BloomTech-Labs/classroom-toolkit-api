@@ -33,13 +33,13 @@ async def version():
     return VERSION
 
 
-@API.get("/lesson_plan", tags=["Lesson Plans"])
-async def lessonplan(queue: BackgroundTasks,
+@API.get("/lesson_plan", tags=["Toolkit"])
+async def lesson_plan(queue: BackgroundTasks,
                    topic: str,
                    problems: str,
                    template_num: int):
-    """<h3>Lesson Plan 1</h3>
-    Generates a lesson plan based on template 1 for a given topic and problems.
+    """<h3>Lesson Plan</h3>
+    Generates a lesson plan based on a designated template for a given topic and problems.
     <pre><code>
     @param queue: Automatic FastAPI BackgroundTasks.
     @param topic: String.
