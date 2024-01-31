@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.background import BackgroundTasks
 
-from app.utilities import custom_outreach
+from app.lessonplan import custom_lesson_plan
 
 with open("README.md", "r") as file:
     next(file)
@@ -34,22 +34,20 @@ async def version():
 
 
 @API.get("/lesson_plan", tags=["Lesson Plans"])
-async def outreach(queue: BackgroundTasks,
+async def lessonplan(queue: BackgroundTasks,
                    topic: str,
                    problems: str,
-                   template_num: str):
-    """<h3>Outreach</h3>
-    Sends an AI Generated Cold Outreach Email
+                   template_num: int):
+    """<h3>Lesson Plan 1</h3>
+    Generates a lesson plan based on template 1 for a given topic and problems.
     <pre><code>
     @param queue: Automatic FastAPI BackgroundTasks.
-    @param your_name: String.
-    @param your_email: String.
-    @param company: String.
-    @param job_title: String.
-    @param job_description: String.
-    @param key_points_from_resume: String.
+    @param topic: String.
+    @param problems: String.
+    @param template_num: Integer.
     @return: String.</code></pre>"""
-    queue.add_task(topic,
+    queue.add_task(custom_lesson_plan,
+                   topic,
                    problems,
                    template_num)
     return {"status": 200, "message": "job started"}
