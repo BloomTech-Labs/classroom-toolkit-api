@@ -35,12 +35,9 @@ async def version():
 
 @API.get("/lesson_plan", tags=["Lesson Plans"])
 async def outreach(queue: BackgroundTasks,
-                   your_name: str,
-                   your_email: str,
-                   company: str,
-                   job_title: str,
-                   job_description: str,
-                   key_points_from_resume: str):
+                   topic: str,
+                   problems: str,
+                   template_num: str):
     """<h3>Outreach</h3>
     Sends an AI Generated Cold Outreach Email
     <pre><code>
@@ -52,11 +49,7 @@ async def outreach(queue: BackgroundTasks,
     @param job_description: String.
     @param key_points_from_resume: String.
     @return: String.</code></pre>"""
-    queue.add_task(custom_outreach,
-                   your_name,
-                   your_email,
-                   company,
-                   job_title,
-                   job_description,
-                   key_points_from_resume)
+    queue.add_task(topic,
+                   problems,
+                   template_num)
     return {"status": 200, "message": "job started"}
