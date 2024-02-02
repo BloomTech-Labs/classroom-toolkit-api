@@ -82,7 +82,7 @@ def custom_lesson_plan(topic: str,
              f"Keep in mind, the ultimate goal of this lesson is to teach students" \
              f"how to solve the following problems/questions: {problems}." \
              f"Remember to use clear and straigtforward language in the lesson plan." \
-             f"Any instructor should be able to understand and implement it easily." \
+             f"Any instructor should be able to understand and implement this lesson plan easily." \
              f"You must output JSON data. The output should be in the following format: {json_string}." 
     result, *_ = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
