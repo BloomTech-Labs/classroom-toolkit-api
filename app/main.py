@@ -1,6 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.background import BackgroundTasks
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+import json
 
 from app.lessonplan import custom_lesson_plan
 
@@ -33,21 +35,24 @@ async def version():
     return VERSION
 
 
-@API.get("/lesson_plan", tags=["Toolkit"])
-async def lesson_plan(queue: BackgroundTasks,
-                   topic: str,
-                   problems: str,
-                   template_num: int):
-    """<h3>Lesson Plan</h3>
+templates = Jinja2Templates(directory="app/templates")
+
+@API.get("/lesson_plan", tags=["Toolkit"], response_class=HTMLResponse)
+async def lesson_plan(request: Request, topic: str, problems: str, template_num: int):
+    """
+    <h3>Lesson Plan</h3>
     Generates a lesson plan based on a designated template for a given topic and problems.
     <pre><code>
-    @param queue: Automatic FastAPI BackgroundTasks.
-    @param topic: String.
-    @param problems: String.
-    @param template_num: Integer.
-    @return: String.</code></pre>"""
-    queue.add_task(custom_lesson_plan,
-                   topic,
-                   problems,
-                   template_num)
-    return {"status": 200, "message": "job started"}
+    @param request: Request object for context inclusion.
+    @param topic: Topic of the lesson plan.
+    @param problems: Problems to include in the lesson plan.
+    @param template_num: Template number to use for generating the lesson plan.
+    @return: HTMLResponse containing the rendered lesson plan.</code></pre>
+    """
+    # Call a synchronous version of your custom_lesson_plan function
+    lesson_plan_content = json.loads(custom_lesson_plan(topic, problems, template_num))
+
+    print(lesson_plan_content)
+
+    # Render the HTML template with the lesson plan content
+    return templates.TemplateResponse("lesson_plan_1.html", {"request": request, **lesson_plan_content})

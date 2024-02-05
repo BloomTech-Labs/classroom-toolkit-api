@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ topic }}</title>
+    <style>
+      span {
+        font-weight: bold;
+      }
+      ol {
+        margin-top: 1%;
+      }
+      ul {
+        margin-top: 1%;
+        list-style-type: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>{{ topic }}</h1>
+    <h3>Introduction</h3>
+    <p>{{ intro }}</p>
+    <h3>Learning Objectives</h3>
+    <ol>
+      {% for objective in objectives %}
+      <li>{{ objective }}</li>
+      {% endfor %}
+    </ol>
+    <h3>Sprint Challenge Problems</h3>
+    <ol>
+      {% for problem in input_problems %}
+      <li>
+          <p><span>Question:</span> {{ problem.question }}</p>
+          <p><span>Answer:</span> {{ problem.answer }}</p>
+          <span>Procedure:</span>
+          <ul>
+            {% for step in problem.procedure.split('\n') %}
+            <li>{{ step }}</li>
+            {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+    </ol>
+    <h3>Derivative Problems</h3>
+    <ol>
+      {% for problem in derivative_problems %}
+      <li>
+          <p><span>Question:</span> {{ problem.question }}</p>
+          <p><span>Answer:</span> {{ problem.solution }}</p>
+          <span>Procedure:</span>
+          <ol>
+            {% for step in problem.procedure.split('\n') %}
+            <li>{{ step }}</li>
+            {% endfor %}
+          </ol>
+      </li>
+      {% endfor %}
+    </ol>
+    <h3>Conclusion</h3>
+    <p>{{ conclusion }}</p>
+  </body>
+</html>
