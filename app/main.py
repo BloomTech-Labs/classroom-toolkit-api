@@ -14,7 +14,7 @@ with open("README.md", "r") as file:
     api_description = file.read()
 
 # Define API metadata
-API_VERSION = "0.0.1"
+API_VERSION = "0.0.3"
 API_TITLE = 'Classroom Toolkit API'
 API_DESCRIPTION = api_description
 DOCS_URL = '/'

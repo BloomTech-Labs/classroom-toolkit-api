@@ -52,11 +52,16 @@
     <h2>Core Competencies</h2>
     <h3>The student must demonstrate...</h3>
     <ol>
-      {% for objective in objectives %}
+      {% for objective in input_objectives %}
       <li>{{ objective }}</li>
       {% endfor %}
     </ol>
-    <h2>Sprint Challenge Problems</h2>
+    <h2>Assessment Criteria</h2>
+      {% for topic in objectives %}
+      <h3>{{ topic.objective }}</h3>
+      <p>{{ topic.assessment }}</p>
+      {% endfor %}
+    <h2>Coding Problems</h2>
     <ol>
       {% for problem in problems %}
       <li>
@@ -81,7 +86,20 @@
       <hr/>
       {% endfor %}
     </ol>
-    <h3>Conclusion</h3>
+    <h2>Quiz</h2>
+    {% for question in quiz %}
+      <ol>
+        <li>
+          <p><span>{{ question.question }}</span></p>
+          <ul>
+            {% for answer in question.multiple_choice %}
+            <li>{{ answer }}</li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ol>
+    {% endfor %}
+    <h2>Conclusion</h2>
     <p>{{ conclusion }}</p>
   </body>
 </html>
