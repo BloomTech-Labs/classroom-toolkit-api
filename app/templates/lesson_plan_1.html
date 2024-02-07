@@ -26,7 +26,7 @@
       }
       .code-block {
         font-family: 'Courier New', monospace;
-        width: 60%; /* Adjust width as necessary */
+        width: 80%; /* Adjust width as necessary */
         margin: 20px auto; /* Centers the block */
         background-color: #f4f4f4;
         border: 1px solid #ddd; /* Subtle border */
@@ -87,8 +87,8 @@
       {% endfor %}
     </ol>
     <h2>Quiz</h2>
-    {% for question in quiz %}
       <ol>
+      {% for question in quiz %}
         <li>
           <p><span>{{ question.question }}</span></p>
           <ul>
