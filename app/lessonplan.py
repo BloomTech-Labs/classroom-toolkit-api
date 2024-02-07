@@ -1,6 +1,5 @@
 import os
 import json
-from time import sleep
 
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -10,24 +9,6 @@ load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_KEY"))
 
-# Setup worker function to retry openai request if it fails
-
-def try_retry_openai(context, prompt):
-
-    def worker():
-        return client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": context},
-                {"role": "user", "content": prompt}
-            ],
-        )
-
-    result = worker()
-    while not result:
-        sleep(5)
-        result = worker()
-    return result
 
 # Function to generate a lesson plan from the given topic and problems using GPT-3.5
 

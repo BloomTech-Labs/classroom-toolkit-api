@@ -1,8 +1,0 @@
-{
-    "topic": "The topic of the lesson plan. This should be a clear and concise description of the lesson plan.",
-    "intro": "Short introduction to the lesson plan. This should be a brief overview of the lesson plan.",
-    "objectives": "List of 3-5 learning objectives for the lesson. Learning objectives, sometimes referred to as learning outcomes, are the statements that clearly describe what students are expected to achieve as a result of instruction. Different from broad learning goals, learning objectives provide clear criteria for instructors to assess whether students are meeting the desired learning goals.",
-    "input_problems": "Problems/questions that exactly match the problems/questions provided by the user. Each problem/question should have a solution and a short proceedure to solve it. The proceedure should be clear and easy to understand. The solution should be correct and easy to understand. The problems/questions should be related to the topic of the lesson plan.",
-    "derivative_problems": "List of problems/questions and their solutions. Each problem/question should have a solution and a short proceedure to solve it. These problems are derived from the problems/questions provided by the user. The proceedure should be clear and easy to understand. The solution should be correct and easy to understand. The problems/questions should be related to the topic of the lesson plan.",
-    "conclusion": "Short conclusion to the lesson plan. This should summarize the lesson and provide a clear understanding of the lesson's objectives and the problems/questions that were solved. This should also provide a clear understanding of the next steps for the students."
-}
