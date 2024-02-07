@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Module 1 - Working on a Web Application, Variables</title>
+    <style>
+      body {
+        font-family: 'Times New Roman', Times, serif;
+        margin: 0;
+        padding: 0px 20px;
+      }
+      span {
+        font-weight: semibold;
+        font-size: larger;
+      }
+      ol {
+        margin-top: 1%;
+        margin-bottom: 1%;
+      }
+      ul {
+        margin-top: 1%;
+        margin-bottom: 1%;
+        list-style-type: none;
+      }
+      li {
+        margin-top: .35%;
+      }
+      .code-block {
+        font-family: 'Courier New', monospace;
+        width: 60%; /* Adjust width as necessary */
+        margin: 20px auto; /* Centers the block */
+        background-color: #f4f4f4;
+        border: 1px solid #ddd; /* Subtle border */
+        border-left: 5px solid #ff4b00;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+        overflow-x: auto; /* For horizontal scrolling */
+        padding: 0 5%;
+        line-height: .5;
+        }
+
+        .code-block code {
+        color: #333;
+        font-family: 'Courier New', monospace;
+        }
+
+        p {
+        margin: 0;
+        }
+  </style>
+  </head>
+  <body>
+    <h1>Module 1 - Working on a Web Application, Variables</h1>
+    <h2>Introduction</h2>
+      <p>Welcome to Module 1 on Variables in JavaScript! In this lesson, students will learn about variables, operators, and basic arithmetic in JavaScript. We will explore how to declare variables using &#39;let&#39; and &#39;const&#39;, perform operations such as exponentiation, modulo, incrementing, and decrementing, and learn to solve problems by applying these concepts. By the end of this module, students will be able to manipulate and calculate values precisely, a foundational skill for any aspiring web developer.</p>
+    <h2>Core Competencies</h2>
+    <h3>The student must demonstrate...</h3>
+    <ol>
+      
+      <li>Opening your first web application</li>
+      
+      <li> Accessing the JavaScript interpreter: the console</li>
+      
+      <li> Adding code to a page using VS Code</li>
+      
+      <li> Using the console to troubleshoot problems</li>
+      
+      <li> Adding comments to the code</li>
+      
+      <li> Formatting code automatically</li>
+      
+      <li> Understanding primitive types</li>
+      
+      <li> Using arithmetic operators</li>
+      
+      <li> Joining strings with the + operator</li>
+      
+      <li> Determining type with the typeof operator</li>
+      
+    </ol>
+    <h2>Sprint Challenge Problems</h2>
+    <ol>
+      
+      <li>
+          <p><span> Calculate the num1 raised to the power of num2 and add num3 to the result. Then, add the remainder of 10 divided by 3 to the previous result.</span></p>
+          <h3>Procedure:</h3> 
+          <ol>
+            
+            <li>Calculate num1 to the power of num2 using the exponentiation operator (**).</li>
+            
+            <li>Add num3 to the result of the exponentiation.</li>
+            
+            <li>Use the modulo operator (%) to find the remainder of 10 divided by 3.</li>
+            
+            <li>Add the remainder to the result obtained after adding num3.</li>
+            
+          </ol>
+          <h3>Code:</h3>
+          <div class="code-block">
+            <pre>
+              <code>
+                  
+                  <p>let result1;</p>
+                  
+                  <p>const num1 = 6;</p>
+                  
+                  <p>const num2 = 5;</p>
+                  
+                  <p>const num3 = 938460;</p>
+                  
+                  <p>result1 = (num1 ** num2) + num3;</p>
+                  
+                  <p>result1 += (10 % 3);</p>
+                  
+              </code>
+            </pre>
+          </div>
+      </li>
+      <hr/>
+      <li>
+          <p><span>Find the average of two ages, increment the result, declare a new variable, decrement it, and finally, reduce the previous result by this new variable&#39;s value.</span></p>
+          <h3>Procedure:</h3> 
+          <ol>
+            
+            <li>Declare result2 and calculate the average of age1 and age2.</li>
+            
+            <li>Increment result2 by 1 using the increment operator (++).</li>
+            
+            <li>Declare a new variable with a unique name and assign it the value 10.</li>
+            
+            <li>Decrement the new variable by 1 using the decrement operator (--).</li>
+            
+            <li>Subtract the value of the new variable from result2.</li>
+            
+          </ol>
+          <h3>Code:</h3>
+          <div class="code-block">
+            <pre>
+              <code>
+                  
+                  <p>let result2;</p>
+
+                  <p>const age1 = 38;</p>
+                  
+                  <p>const age2 = 26;</p>
+                  
+                  <p>result2 = (age1 + age2) / 2;</p>
+                  
+                  <p>result2++;</p>
+                  
+                  <p>let tempVar = 10;</p>
+                  
+                  <p>tempVar--;</p>
+                  
+                  <p>result2 -= tempVar;</p>
+                  
+              </code>
+            </pre>
+          </div>
+      </li>
+      
+    </ol>
+    <h3>Conclusion</h3>
+      <p>Today&#39;s lesson focused on utilizing JavaScript variables and basic arithmetic operations. We covered the declaration of variables, the use of const and let, and common operations like exponentiation, modulo, incrementing, and decrementing. These fundamental skills are essential building blocks that you will continuously use and build upon as we delve deeper into JavaScript and web development. Practice these concepts to gain fluency and prepare for more complex challenges ahead.</p>
+  </body>
+</html>

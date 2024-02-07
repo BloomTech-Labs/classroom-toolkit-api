@@ -38,7 +38,7 @@ async def version():
 templates = Jinja2Templates(directory="app/templates")
 
 @API.get("/lesson_plan", tags=["Toolkit"], response_class=HTMLResponse)
-async def lesson_plan(request: Request, topic: str, problems: str, template_num: int):
+async def lesson_plan(request: Request, topic: str, problems: str, objectives: str):
     """
     <h3>Lesson Plan</h3>
     Generates a lesson plan based on a designated template for a given topic and problems.
@@ -46,11 +46,17 @@ async def lesson_plan(request: Request, topic: str, problems: str, template_num:
     @param request: Request object for context inclusion.
     @param topic: Topic of the lesson plan.
     @param problems: Problems to include in the lesson plan.
-    @param template_num: Template number to use for generating the lesson plan.
+    @param objectives: Objectives to include in the lesson plan.
     @return: HTMLResponse containing the rendered lesson plan.</code></pre>
     """
     # Call a synchronous version of your custom_lesson_plan function
-    lesson_plan_content = json.loads(custom_lesson_plan(topic, problems, template_num))
+    lesson_plan_content = json.loads(custom_lesson_plan(topic, problems))
+
+    # add the objectives to the lesson plan content as list of strings delimited by a comma
+    lesson_plan_content["objectives"] = objectives.split(",")
+    # add the topic to the lesson plan content
+    lesson_plan_content["topic"] = topic
+
 
     print(lesson_plan_content)
 

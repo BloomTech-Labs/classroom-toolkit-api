@@ -1,0 +1,36 @@
+{
+    "intro": "100-200 word introduction to the lesson plan. It should be a brief overview of the lesson plan. The teacher will use this to introduce the lesson plan to the students.",
+    "problems": [
+        {
+            "problem": "A 1-2 sentence description of the problem.",
+            "solution": "A 3-5 step procedure of the solution to the problem.",
+            "code": "The code for the solution to the problem. This should be a complete code snippet that can be run in the browser. It should be a complete solution to the problem using JavaScript."
+        },
+        {
+            "problem": "A 1-2 sentence description of the problem.",
+            "solution": "A 3-5 step procedure of the solution to the problem.",
+            "code": "The code for the solution to the problem. This should be a complete code snippet that can be run in the browser. It should be a complete solution to the problem using JavaScript."
+        },
+        {
+            "problem": "A 1-2 sentence description of the problem.",
+            "solution": "A 3-5 step procedure of the solution to the problem.",
+            "code": "The code for the solution to the problem. This should be a complete code snippet that can be run in the browser. It should be a complete solution to the problem using JavaScript."
+        },
+        {
+            "problem": "A 1-2 sentence description of the problem.",
+            "solution": "A 3-5 step procedure of the solution to the problem.",
+            "code": "The code for the solution to the problem. This should be a complete code snippet that can be run in the browser. It should be a complete solution to the problem using JavaScript."
+        },
+        {
+            "problem": "A 1-2 sentence description of the problem.",
+            "solution": "A 3-5 step procedure of the solution to the problem.",
+            "code": "The code for the solution to the problem. This should be a complete code snippet that can be run in the browser. It should be a complete solution to the problem using JavaScript."
+        },
+        {
+            "problem": "A 1-2 sentence description of the problem.",
+            "solution": "A 3-5 step procedure of the solution to the problem.",
+            "code": "The code for the solution to the problem. This should be a complete code snippet that can be run in the browser. It should be a complete solution to the problem using JavaScript."
+        }
+    ],
+    "conclusion": "100-200 word conclusion to the lesson plan. It should be a brief overview of the lesson plan. The teacher will use this to conclude the lesson plan to the students."
+}
