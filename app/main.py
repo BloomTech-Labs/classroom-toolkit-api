@@ -1,64 +1,72 @@
+# Import necessary modules from FastAPI, Jinja2, and other libraries
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import json
 
+# Import custom lesson plan generator function
 from app.lessonplan import custom_lesson_plan
 
+# Read the API description from README.md, skipping the first line
 with open("README.md", "r") as file:
-    next(file)
-    description = file.read()
+    next(file)  # Skip the first line
+    api_description = file.read()
 
-VERSION = "0.0.1"
-API = FastAPI(
-    title='Classroom Toolkit API',
-    description=description,
-    version=VERSION,
-    docs_url='/',
+# Define API metadata
+API_VERSION = "0.0.1"
+API_TITLE = 'Classroom Toolkit API'
+API_DESCRIPTION = api_description
+DOCS_URL = '/'
+
+# Initialize the FastAPI application with metadata
+api_app = FastAPI(
+    title=API_TITLE,
+    description=API_DESCRIPTION,
+    version=API_VERSION,
+    docs_url=DOCS_URL,
 )
-API.add_middleware(
+
+# Configure CORS policy for the API to allow requests from any origin
+api_app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=['*'],  # Allow all origins
     allow_credentials=True,
-    allow_methods=['*'],
-    allow_headers=['*'],
+    allow_methods=['*'],  # Allow all methods
+    allow_headers=['*'],  # Allow all headers
 )
 
-
-@API.get("/version", tags=["General"])
-async def version():
-    """<h3>Version</h3>
-    Returns the current version of the API
-    <pre><code>
-    @return: String </code></pre>"""
-    return VERSION
-
-
+# Set the directory for Jinja2 templates
 templates = Jinja2Templates(directory="app/templates")
 
-@API.get("/lesson_plan", tags=["Toolkit"], response_class=HTMLResponse)
-async def lesson_plan(request: Request, topic: str, problems: str, objectives: str):
+# Define an endpoint to get the API version
+@api_app.get("/version", tags=["General"])
+async def get_api_version():
+    """Returns the current version of the API."""
+    return API_VERSION
+
+# Define an endpoint to generate a lesson plan
+@api_app.get("/lesson_plan", tags=["Toolkit"], response_class=HTMLResponse)
+async def generate_lesson_plan(request: Request, topic: str, problems: str, objectives: str, quiz: str):
     """
-    <h3>Lesson Plan</h3>
-    Generates a lesson plan based on a designated template for a given topic and problems.
-    <pre><code>
-    @param request: Request object for context inclusion.
-    @param topic: Topic of the lesson plan.
-    @param problems: Problems to include in the lesson plan.
-    @param objectives: Objectives to include in the lesson plan.
-    @return: HTMLResponse containing the rendered lesson plan.</code></pre>
+    Generates a lesson plan based on a template, for a given topic and set of problems and objectives.
+    
+    Parameters:
+    - request: FastAPI request object, needed for template context.
+    - topic: The main subject of the lesson plan.
+    - problems: Problems to be addressed in the lesson plan.
+    - objectives: Learning objectives for the lesson.
+    - quiz: Quiz questions related to the topic.
+    
+    Returns:
+    An HTMLResponse containing the rendered lesson plan.
     """
-    # Call a synchronous version of your custom_lesson_plan function
-    lesson_plan_content = json.loads(custom_lesson_plan(topic, problems))
+    # Generate lesson plan content
+    lesson_plan_data = json.loads(custom_lesson_plan(topic, problems, objectives, quiz))
+    
+    # Add objectives as a list and the topic to the lesson plan data
+    lesson_plan_data["input_objectives"] = objectives.split(",")  # Convert objectives to a list
+    lesson_plan_data["topic"] = topic  # Add topic
 
-    # add the objectives to the lesson plan content as list of strings delimited by a comma
-    lesson_plan_content["objectives"] = objectives.split(",")
-    # add the topic to the lesson plan content
-    lesson_plan_content["topic"] = topic
-
-
-    print(lesson_plan_content)
-
-    # Render the HTML template with the lesson plan content
-    return templates.TemplateResponse("lesson_plan_1.html", {"request": request, **lesson_plan_content})
+    # Render and return the HTML template for the lesson plan
+    return templates.TemplateResponse("lesson_plan_1.html", {"request": request, **lesson_plan_data})
