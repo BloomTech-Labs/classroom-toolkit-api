@@ -56,16 +56,15 @@
       <li>{{ objective }}</li>
       {% endfor %}
     </ol>
-    <h2>Assessment Criteria</h2>
-      {% for topic in objectives %}
-      <h3>{{ topic.objective }}</h3>
-      <p>{{ topic.assessment }}</p>
-      {% endfor %}
     <h2>Coding Problems</h2>
     <ol>
       {% for problem in problems %}
       <li>
           <p><span>{{ problem.problem }}</span></p>
+          <h3>Core Competency:</h3>
+          <p>{{ problem.core_competency }}</p>
+          <h3>Relevance:</h3>
+          <p>{{ problem.relevance }}</p>
           <h3>Procedure:</h3>
           <ol>
             {% for step in problem.solution %}
@@ -82,23 +81,12 @@
               </code>
             </pre>
           </div>
+          <h3>Check For Understanding:</h3>
+          <p>{{ problem.check_for_understanding }}</p>
       </li>
       <hr/>
       {% endfor %}
     </ol>
-    <h2>Quiz</h2>
-      <ol>
-      {% for question in quiz %}
-        <li>
-          <p><span>{{ question.question }}</span></p>
-          <ul>
-            {% for answer in question.multiple_choice %}
-            <li>{{ answer }}</li>
-            {% endfor %}
-          </ul>
-        </li>
-      </ol>
-    {% endfor %}
     <h2>Conclusion</h2>
     <p>{{ conclusion }}</p>
   </body>

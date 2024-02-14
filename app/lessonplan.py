@@ -29,26 +29,37 @@ def custom_lesson_plan(topic: str, problems: str, objectives: str, quiz: str):
     # Convert the JSON template dictionary back to a JSON string for inclusion in the prompt
     json_template_string = json.dumps(json_template)
 
-    # Define the context for the GPT-4 prompt, explaining the task and the JSON schema
+    # Define the context for the GPT-4 prompt, explaining the task and the JSON schema"
     context = (
         f"As an expert JavaScript educator with ten years of experience, your task is to create a lesson plan "
         f"that leverages JSON-based structuring. This plan should be encapsulated in a JSON object, following "
         f"a specific schema, and should be crafted to not only educate but also engage students through creative "
-        f"and practical learning experiences. The schema must exactly match the following: {json_template_string}."
+        f"and practical learning problems. The schema must exactly match the following: {json_template_string}."
+        f"Lets breakdown the schema key by key: (1)'intro` is a string that introduces the lesson, (2) `problems`"
+        f"is an array of `problem` objects, and (3) `conclusion` is a string that concludes the lesson. The `problem` "
+        f"object has the following keys: (1) `core competency` is an objective that directly matches an objective inputted "
+        f"by the user, (2) `relevance` is a string that explains the relevance of the problem, (2) `problem` is a string"
+        f"that is a problem prompt that directly matches a problem inputted by the user, (3) `solution` is an array of "
+        f"5-7 detailed steps to solving the problem, and (4) `code` is a string that gives a code snippet that"
+        f"directly solves the problem. The `check_for_understanding` is a string that is a question that directly matches"
+        f"a quiz inputted by the user. There must be at least 10 problems in the `problems` array."
     )
 
-    # Define the prompt for GPT-3.5, detailing the requirements for the lesson plan
+    # Define the prompt for GPT-4, detailing the requirements for the lesson plan
     prompt = (
         f"Your objective today is to devise a lesson plan dedicated to teaching {topic}. The core aim is to equip "
-        f"students with the skills to tackle the following questions: {problems}. Ensure the lesson plan is "
-        f"articulated in clear, straightforward language, making it accessible for any instructor to comprehend "
-        f"and execute. Your lesson plan should start with a clear topic, a subject that encapsulates the essence "
-        f"of the lesson. The introduction should set the stage, offering a glimpse into what the lesson entails "
-        f"and sparking curiosity among the students. The objectives you use must exactly match the following: "
-        f"{objectives}. The problems you use must be similar to the following: {problems}. The quiz you use must "
-        f"be similar to the following: {quiz}. Remember, the goal is not just to teach JavaScript, but to inspire "
-        f"a deeper understanding and appreciation for the power of coding in solving real-world problems. With "
-        f"creativity, clarity, and a focus on practical applications, your lesson plan will not just educate; it will illuminate."
+        f"students with the skills to tackle the following coding challenges: {problems}. Use these example problems "
+        f"to build the `problems` array in the JSON schema, specifically `problem`, `solution`, and `code` inside "
+        f"the `problem` object. Ensure the lesson plan is articulated in clear, straightforward language, making it "
+        f"accessible for any instructor to comprehend and execute. The introduction should set the stage, offering a "
+        f"glimpse into what the lesson entails and sparking curiosity among the students. The `relevance` key inside "
+        f"`problem` should detail an on-the-job scenario when you might solve a similar problem. It should be in the form "
+        f"of a short story, detailing how and when you might see the problem in real life. The `core_competency` in the "
+        f"`problem` object should directly match one of the following objectives: {objectives}. The `check_for_understanding` "
+        f"in the `problem` object must be similar to the following quiz: {quiz}. The conclusion should wrap up the lesson."
+        f"Remember, the goal is not just to teach JavaScript, but to inspire a deeper understanding and appreciation for the "
+        f"power of coding in solving real-world problems. With creativity, clarity, and a focus on practical applications, "
+        f"your lesson plan will not just educate; it will illuminate."
     )
 
     # Use the OpenAI API to generate the lesson plan based on the provided context and prompt

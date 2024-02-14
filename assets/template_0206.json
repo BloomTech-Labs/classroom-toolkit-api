@@ -1,27 +1,13 @@
 {
-    "intro": "A 100-200 word engaging introduction to the lesson plan, setting the stage for the topic and what students will learn.",
-    "objectives": [
-      {
-        "objective": "A clear statement of a single learning goal that students should achieve by the end of the lesson. This must exactly match one of the objectives provided.",
-        "assessment": "A 100-200 word description detailing how the teacher will measure students' understanding of this objective, including specific criteria or activities."
-      }
-    ],
-    "quiz": [
-      {
-        "question": "A concise 1-2 sentence question related to the lesson's content.",
-        "multiple_choice": [
-          "The correct answer.",
-          "A plausible but incorrect answer.",
-          "Another plausible but incorrect answer.",
-          "A distractor that is clearly incorrect."
-        ]
-      }
-    ],
+    "intro": "A 100-200 word engaging introduction to the lesson plan, setting the stage for the topic and what students will learn. Include a real-life example or scenario that relates to the lesson.",
     "problems": [
       {
+        "core_competency": "A concise 1-2 sentence statement of the core competency that the lesson addresses. This should exactly match one of the `objectives` inputted by the user.",
+        "relevance": "110-200 word real life example of the problem, showing why it's important to solve. This should be engaging and relatable to students. It should in the fomr of a short story or scenario.",
         "problem": "A concise 1-2 sentence statement of a challenge related to the lesson's topic.",
-        "solution": "A detailed 3-5 step procedure for solving the problem, with each step clearly explained.",
-        "code": "A well-commented JavaScript code snippet that implements the solution, ready to be run in a browser."
+        "solution": "An array of detailed 3-5 step procedure for solving the problem, with each step clearly explained.",
+        "code": "A well-commented JavaScript code snippet that implements the solution, ready to be run in a browser.",
+        "check_for_understanding": "An open-ended question that prompts students to think critically about the problem and solution."
       }
     ],
     "conclusion": "A 100-200 word summary that wraps up the lesson, emphasizing key points and takeaways."
