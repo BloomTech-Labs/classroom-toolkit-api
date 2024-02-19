@@ -13,7 +13,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_KEY"))
 # Set the response format for the OpenAI API to JSON
 response_format = ResponseFormat(type="json_object")
 
-def custom_lesson_plan(topic: str, problems: str, objectives: str, quiz: str):
+def custom_lesson_plan(topic: str, problems: str, objectives: str, quiz: str, challenge: str):
     """
     Generates a lesson plan for teaching a specific topic, with given problems, objectives, and a quiz.
     The lesson plan is generated using GPT-4 and is structured as a JSON object.
@@ -42,7 +42,14 @@ def custom_lesson_plan(topic: str, problems: str, objectives: str, quiz: str):
         f"that is a problem prompt that directly matches a problem inputted by the user, (3) `solution` is an array of "
         f"5-7 detailed steps to solving the problem, and (4) `code` is a string that gives a code snippet that"
         f"directly solves the problem. The `check_for_understanding` is a string that is a question that directly matches"
-        f"a quiz inputted by the user. There must be at least 10 problems in the `problems` array."
+        f"a quiz inputted by the user. There must be at least 10 problems in the `problems` array. The `challenge` object"
+        f"has the following keys: (1) `name`, (2) `objective`, (3) `functionality`, (4) `conditions`, (5) `hints`, (6)"
+        f"`procedure`, (7) `code`, and (8) `check_for_understanding`. The `name` is a string that is the name of the challenge."
+        f"The objective` is a string that is the objective of the challenge. The `functionality` is a string that explains"
+        f"what the challenge should do. The `conditions` is a string that explains the conditions of the challenge. The `hints`"
+        f"is an array of strings that are hints to solving the challenge. The `procedure` is an array of strings that are steps"
+        f"to solving the challenge. The `code` is a string that is a code snippet that solves the challenge. The `check_for_understanding`"
+        f"is a string that is a question that checks for understanding of the challenge."
     )
 
     # Define the prompt for GPT-4, detailing the requirements for the lesson plan
@@ -56,7 +63,8 @@ def custom_lesson_plan(topic: str, problems: str, objectives: str, quiz: str):
         f"`problem` should detail an on-the-job scenario when you might solve a similar problem. It should be in the form "
         f"of a short story, detailing how and when you might see the problem in real life. The `core_competency` in the "
         f"`problem` object should directly match one of the following objectives: {objectives}. The `check_for_understanding` "
-        f"in the `problem` object must be similar to the following quiz: {quiz}. The conclusion should wrap up the lesson."
+        f"in the `problem` object must be similar to the following quiz: {quiz}. The `challenge` object must be similar to"
+        f"{challenge}. Ensure the problem is unique to the topic, but formatted like the example. The conclusion should wrap up the lesson."
         f"Remember, the goal is not just to teach JavaScript, but to inspire a deeper understanding and appreciation for the "
         f"power of coding in solving real-world problems. With creativity, clarity, and a focus on practical applications, "
         f"your lesson plan will not just educate; it will illuminate."

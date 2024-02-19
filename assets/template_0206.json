@@ -10,6 +10,30 @@
         "check_for_understanding": "An open-ended question that prompts students to think critically about the problem and solution."
       }
     ],
+    "challenge": {
+      "name": "Challenge 1: The sumIntegrator Function",
+      "objective": "Create a function named sumIntegrator that performs operations based on the types of the inputs it receives.",
+      "functionality": [
+        "The sumIntegrator function accepts two arguments named x and y.",
+        "If x and y are integers, it returns their sum.",
+        "If x and y are strings, it returns a function named sum that, when called with two integers, returns their sum."
+      ],
+      "conditions": [
+        "Both x and y must be of the same type. If not, return the string 'x and y must be of the same type'.",
+        "x and y can only be integers or strings. If they are of any other type, return 'x and y must be integers or strings'."
+      ],
+      "hints": [
+        "Consider addressing the edge cases first, such as checking for type mismatches or unsupported types, before implementing the main functionality.",
+        "The order of conditions and checks in your code may differ from the order presented in this description."
+      ],
+      "procedure": [
+        "Confirm that x and y are of the same type. If they are not, provide the appropriate error message.",
+        "Check that x and y are either integers or strings. Return an error message if they are not.",
+        "Depending on their type, either: Return the sum of x and y if they are integers. Return a sum function that sums two integers if x and y are strings."
+      ],
+      "code": "function sumIntegrator(x, y) {\n  // Check if both arguments are of the same type\n  if (typeof x !== typeof y) {\n      return \"x and y must be of the same type\";\n  }\n\n  // If both are strings, return a sum function\n  if (typeof x === \"string\" && typeof y === \"string\") {\n      return function sum(a, b) {\n      if (Number.isInteger(a) && Number.isInteger(b)) {\n          return a + b;\n      } else {\n          return \"Both arguments of sum must be integers\";\n      }\n      };\n  }\n\n  // If both are integers, return their sum\n  if (Number.isInteger(x) && Number.isInteger(y)) {\n      return x + y;\n  }\n\n  // If neither condition is met, return an error message\n  return \"x and y must be integers or strings\";\n}",
+      "check_for_understanding": "What test cases would you write to ensure the sumIntegrator function works correctly for all expected input scenarios?"
+    },
     "conclusion": "A 100-200 word summary that wraps up the lesson, emphasizing key points and takeaways."
   }
   
