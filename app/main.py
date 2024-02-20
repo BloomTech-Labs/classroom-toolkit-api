@@ -13,7 +13,7 @@ with open("README.md", "r") as file:
     api_description = file.read()
 
 # Define API metadata
-API_VERSION = "0.0.3"
+API_VERSION = "0.0.4"
 API_TITLE = 'Classroom Toolkit API'
 API_DESCRIPTION = api_description
 DOCS_URL = '/'
@@ -95,20 +95,15 @@ async def generate_lesson_plan(topic: str, problems: str, objectives: str, quiz:
         if 'check_for_understanding' in problem:
             markdown_content += f"**Check For Understanding:** {problem['check_for_understanding']}\n"
 
-    # Parse the challenge JSON string into a Python dictionary
-    challenge_data = json.loads(challenge)
-
     # Add the Sprint Challenge Preview section
-    markdown_content += f"\n## {challenge_data['title']}\n\n{challenge_data['intro']}\n"
+    markdown_content += f"\n## Sprint Challenge Preview\n"
 
     # Add details for the challenge
-    ch = challenge_data['challenge']  # Directly access the challenge object
+    ch = lesson_plan_data['challenge']  # Directly access the challenge object
     markdown_content += f"\n### {ch['name']}\n\n**Objective:** {ch['objective']}\n\n**Functionality:**\n"
-    for func in ch['functionality']:
-        markdown_content += f"- {func}\n"
+    markdown_content += f"- {ch['functionality']}\n"  # Directly access the single functionality item
     markdown_content += "\n**Conditions:**\n"
-    for cond in ch['conditions']:
-        markdown_content += f"- {cond}\n"
+    markdown_content += f"- {ch['conditions']}\n"  # Directly access the single condition item
     markdown_content += "\n**Hints:**\n"
     for hint in ch['hints']:
         markdown_content += f"- {hint}\n"
@@ -116,7 +111,6 @@ async def generate_lesson_plan(topic: str, problems: str, objectives: str, quiz:
     for proc in ch['procedure']:
         markdown_content += f"- {proc}\n"
     markdown_content += f"\n**Code:**\n\n```javascript\n{ch['code']}\n```\n"
-    markdown_content += f"\n**Check For Understanding:** {ch['check_for_understanding']}\n"
 
     # Add conclusion
     markdown_content += f"\n## Conclusion\n\n{lesson_plan_data['conclusion']}\n"

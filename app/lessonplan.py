@@ -44,12 +44,11 @@ def custom_lesson_plan(topic: str, problems: str, objectives: str, quiz: str, ch
         f"directly solves the problem. The `check_for_understanding` is a string that is a question that directly matches"
         f"a quiz inputted by the user. There must be at least 10 problems in the `problems` array. The `challenge` object"
         f"has the following keys: (1) `name`, (2) `objective`, (3) `functionality`, (4) `conditions`, (5) `hints`, (6)"
-        f"`procedure`, (7) `code`, and (8) `check_for_understanding`. The `name` is a string that is the name of the challenge."
+        f"`procedure`, and (7) `code`. The `name` is a string that is the name of the challenge."
         f"The objective` is a string that is the objective of the challenge. The `functionality` is a string that explains"
         f"what the challenge should do. The `conditions` is a string that explains the conditions of the challenge. The `hints`"
         f"is an array of strings that are hints to solving the challenge. The `procedure` is an array of strings that are steps"
-        f"to solving the challenge. The `code` is a string that is a code snippet that solves the challenge. The `check_for_understanding`"
-        f"is a string that is a question that checks for understanding of the challenge."
+        f"to solving the challenge. The `code` is a string that is a code snippet that solves the challenge."
     )
 
     # Define the prompt for GPT-4, detailing the requirements for the lesson plan
