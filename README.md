@@ -1,5 +1,7 @@
 # Classroom Toolkit API
 
+Designed, built, and maintained by [Ashalesh Tilawat](https://github.com/ashtilawat23). 
+
 Welcome to the Classroom Toolkit API, a powerful tool designed to assist teachers in generating comprehensive lesson plans tailored to their specific classroom needs. Utilizing the capabilities of Python, FastAPI, and the advanced natural language processing of GPT-4, our API provides a unique platform where educators can input the desired outcomes, problems, and learning objectives they wish students to tackle by the end of the lesson, and receive a customized lesson plan in return.
 
 ## Features
